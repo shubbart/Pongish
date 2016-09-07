@@ -1,5 +1,6 @@
 
 #include "sfwdraw.h"
+#include <string>
 
 
 Player player;
@@ -29,21 +30,23 @@ void main()
 	ball.xPos = 380;
 	ball.yPos = 320;
 	ball.radius = 13;
-	ball.xVel = 2;
+	ball.xVel = 1;
 	ball.yVel = 5;
 
-	score.texture = sfw::loadTextureMap("./res/tonc_font.png");
+	unsigned font = sfw::loadTextureMap("./res/tonc_font.png");
+
 	score.total = 0;
+	score.xPos = 0;
+	score.yPos = 30;
 
 	sfw::setBackgroundColor(BLACK);
-
-
 
 	while (sfw::stepContext() && player.lives > 0)
 	{
 		sfw::drawTexture(wall.texture, wall.xPos, wall.yPos, wall.width, wall.height, 0, false, 0, BLUE);
 		sfw::drawTexture(player.texture, player.xPos, player.yPos, player.width, player.height, false, 0);
 		sfw::drawCircle(ball.xPos, ball.yPos, ball.radius, ball.radius, GREEN);
+		sfw::drawString(font, std::to_string(score.total).c_str, 0, 20, 30, 30, 0, ' ');
 
 		if (sfw::getKey(KEY_LEFT) && player.xPos > 0)
 		{
