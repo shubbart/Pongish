@@ -1,11 +1,11 @@
-#pragma once
-#include "sfwdraw.h"
-#include "struct.h"
-
-void difficulty()
-{
-	bool(player.score > 0 && player.score % 10 == 0);
-	{
-		ball.xVel = ball.xVel * 2;
-	}
-}
+//#pragma once
+//#include "sfwdraw.h"
+//#include "struct.h"
+//
+//void difficulty()
+//{
+//	if (player.score >= 1 && player.score % 5 == 0);
+//	{
+//		ball.xVel = ball.xVel * 2;
+//	}
+//}
