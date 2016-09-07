@@ -126,6 +126,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="collisions.h" />
+    <ClInclude Include="difficulty.h" />
+    <ClInclude Include="movement.h" />
+    <ClInclude Include="rand.h" />
+    <ClInclude Include="struct.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
