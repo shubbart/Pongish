@@ -9,24 +9,25 @@
 
 unsigned font = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
 
+Player player;
+Wall wall;
+Ball ball;
+Score score;
+
+struct GameState
+{
+
+	int gs()
+
+	{
+
+
+	}
+
+};
+
 void createGameState()
 {
-	Player player;
-	Wall wall;
-	Ball ball;
-	Score score;
-
-	
-	moveLeft();
-	moveRight();
-
-	ball.xPos -= ball.xVel;
-	ball.yPos -= ball.yVel;
-
-	topWallCollision();
-	sideWallCollision();
-	playerCollision();
-	ballDrop();
 
 }
 
@@ -37,17 +38,20 @@ void drawGameState()
 	sfw::drawCircle(ball.xPos, ball.yPos, ball.radius, ball.radius, GREEN);
 	sfw::drawString(font, std::to_string(score.total).c_str(), 0, 25, 25, 25, 0, ' ');
 	sfw::drawString(font, std::to_string(player.lives).c_str(), 765, 35, 35, 35, 0, ' ');
+
 }
 
-struct GameState
+void updateGameState()
 {
+	moveLeft();
+	moveRight();
 
-	int gs()
-	
-	{
-		
+	ball.xPos -= ball.xVel;
+	ball.yPos -= ball.yVel;
 
-	}
-
-};
+	topWallCollision();
+	sideWallCollision();
+	playerCollision();
+	ballDrop();
+}
 
