@@ -4,7 +4,7 @@
 
 struct Player
 {
-	int texture;
+	int texture = sfw::loadTextureMap("./Images/player.png", 100, 25);
 	int xPos = 325;
 	int yPos = 100;
 	int width = 120;
@@ -15,7 +15,7 @@ struct Player
 
 struct Wall
 {
-	int texture;
+	int texture = sfw::loadTextureMap("./res/rock.tga");
 	int xPos = 0;
 	int yPos = 600;
 	int width = 800;

@@ -3,10 +3,7 @@
 #include "rand.h"
 #include "struct.h"
 
-Player player;
-Wall wall;
-Ball ball;
-Score score;
+
 
 
 void topWallCollision()

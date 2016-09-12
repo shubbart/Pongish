@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="collisions.h" />
     <ClInclude Include="difficulty.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="movement.h" />
     <ClInclude Include="rand.h" />
     <ClInclude Include="struct.h" />
