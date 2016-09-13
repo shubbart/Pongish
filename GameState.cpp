@@ -35,6 +35,7 @@ void GameState::start()
 	ball.yPos -= ball.yVel;
 }
 
+
 void GameState::move()
 {
 
@@ -67,7 +68,12 @@ void GameState::collision()
 
 			if (ball.xVel == 0)
 			{
-				ball.xVel = ball.xVel + randRange(-1, 1);
+				ball.xVel = ball.xVel + randRange(-8, 8);
+			}
+
+			if (ball.xVel > 0)
+			{
+				ball.xVel = ball.xVel + randRange(-3, 3);
 			}
 		}
 	
@@ -85,13 +91,20 @@ void GameState::drop()
 	}
 }
 
-
-void GameState::difficulty()
+void GameState::extraLife()
 {
-	// Work on this next //
+	if (player.score % 50 == 0 && player.score > 0)
+	{
+		++player.lives;
+		sfw::drawString(font, "You gained a Life!", 85, 350, 35, 35, 0, ' ');
+	}
 }
+	
 
-
+bool GameState::isAlive() const
+{
+	return player.lives > 0;
+}
 void GameState::gameOver() const
 {
 	if (player.lives == 0)

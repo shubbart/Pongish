@@ -11,16 +11,16 @@ void main()
 	
 	gs.init();
 
-	while (sfw::stepContext())
+	while (sfw::stepContext() && gs.isAlive())
 	{
 		gs.draw();
 		gs.start();
 		gs.move();
 		gs.collision();
 		gs.drop();
-		gs.difficulty();
+		gs.extraLife();
 		gs.gameOver();
 	}
 
-	sfw::termContext();
+ sfw::termContext();
 }
