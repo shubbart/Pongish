@@ -6,7 +6,7 @@ struct Player
 {
 	int texture;
 	int xPos = 325;
-	int yPos = 100;
+	int yPos = 50;
 	int width = 120;
 	int height = 15;
 	int lives = 3;

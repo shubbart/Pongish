@@ -11,6 +11,7 @@ class GameState
 	Ball ball;
 	Score score;
 	unsigned font;
+	unsigned text;
 
 public:
 	void init();
@@ -21,7 +22,8 @@ public:
 	void draw();
 	void extraLife();
 	bool isAlive() const;
-	void gameOver() const;
+	bool resetLives();
+	bool resetScore();
 };
 
 

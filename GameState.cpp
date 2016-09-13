@@ -5,7 +5,6 @@
 #include <string>
 
 
-
 int randRange(int start, int end)
 {
 	srand(time(NULL));
@@ -14,20 +13,26 @@ int randRange(int start, int end)
 
 void GameState::init()
 {
-	sfw::initContext(800, 600, "SoliPong");
 	sfw::setBackgroundColor(BLACK);
 	player.texture = sfw::loadTextureMap("./Images/player.png", 100, 25);
 	wall.texture = sfw::loadTextureMap("./res/rock.tga");
 	font = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
+	text = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 }
 
 void GameState::draw()
 {
+	char scorefont[10];
+	char livesfont[10];
 	sfw::drawTexture(wall.texture, wall.xPos, wall.yPos, wall.width, wall.height, 0, false, 0);
 	sfw::drawTexture(player.texture, player.xPos, player.yPos, player.width, player.height, false, 0);
 	sfw::drawCircle(ball.xPos, ball.yPos, ball.radius, ball.radius, MAGENTA);
-	sfw::drawString(font, std::to_string(score.total).c_str(), 0, 25, 25, 25, 0, ' ');
-	sfw::drawString(font, std::to_string(player.lives).c_str(), 765, 35, 35, 35, 0, ' ');
+	sprintf_s(scorefont, "SCORE");
+	sfw::drawString(font, scorefont, 0, 25, 25, 25);
+	sfw::drawString(font, std::to_string(score.total).c_str(), 150, 25, 25, 25, 0, ' ');
+	sprintf_s(livesfont, "LIVES");
+	sfw::drawString(font, livesfont, 625, 25, 25, 25);
+	sfw::drawString(font, std::to_string(player.lives).c_str(), 775, 25, 25, 25, 0, ' ');
 }
 void GameState::start()
 {
@@ -68,12 +73,12 @@ void GameState::collision()
 
 			if (ball.xVel == 0)
 			{
-				ball.xVel = ball.xVel + randRange(-8, 8);
+				ball.xVel = ball.xVel + randRange(-10, 10);
 			}
 
 			if (ball.xVel > 0)
 			{
-				ball.xVel = ball.xVel + randRange(-3, 3);
+				ball.xVel = ball.xVel + randRange(-5, 5);
 			}
 		}
 	
@@ -83,7 +88,7 @@ void GameState::drop()
 {
 	if (ball.yPos < 0)
 	{
-		player.lives = --player.lives;
+		--player.lives;
 		ball.xPos = 380;
 		ball.yPos = 320;
 		ball.xVel = 0;
@@ -96,17 +101,21 @@ void GameState::extraLife()
 	if (player.score % 50 == 0 && player.score > 0)
 	{
 		++player.lives;
-		sfw::drawString(font, "You gained a Life!", 85, 350, 35, 35, 0, ' ');
 	}
 }
 	
 
-bool GameState::isAlive() const
+bool GameState::isAlive() const 
 {
 	return player.lives > 0;
 }
-void GameState::gameOver() const
+
+bool GameState::resetLives()
 {
-	if (player.lives == 0)
-		sfw::drawString(font, "You Lost the Game!", 85, 350, 35, 35, 0, ' ');
+	return player.lives = 3;
+}
+
+bool GameState::resetScore()
+{
+	return score.total = 0;
 }
