@@ -1,22 +1,25 @@
 
 #include "sfwdraw.h"
 #include "GameState.h"
-
-using namespace sfw;
-
+#include <cstdio>
+#include <cstdlib>
+#include "struct.h"
 
 void main()
 {
+	GameState gs;
 	
-	sfw::initContext(800, 600, "SoliPong");
-	sfw::setBackgroundColor(BLACK);
-
-	 GameState gs = createGameState();
+	gs.init();
 
 	while (sfw::stepContext())
 	{
-		updateGameState(gs);
-		drawGameState(gs);
+		gs.draw();
+		gs.start();
+		gs.move();
+		gs.collision();
+		gs.drop();
+		gs.difficulty();
+		gs.gameOver();
 	}
 
 	sfw::termContext();

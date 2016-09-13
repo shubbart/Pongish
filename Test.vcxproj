@@ -124,14 +124,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="collisions.h" />
-    <ClInclude Include="difficulty.h" />
     <ClInclude Include="GameState.h" />
-    <ClInclude Include="movement.h" />
-    <ClInclude Include="rand.h" />
     <ClInclude Include="struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
