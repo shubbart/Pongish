@@ -15,7 +15,8 @@ void GameState::init()
 {
 	sfw::setBackgroundColor(BLACK);
 	player.texture = sfw::loadTextureMap("./Images/player.png", 100, 25);
-	wall.texture = sfw::loadTextureMap("./res/rock.tga");
+	wall.texture = sfw::loadTextureMap("./Images/wall.png");
+	ball.texture = sfw::loadTextureMap("./Images/ball.gif");
 	font = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
 	text = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 }
@@ -24,9 +25,13 @@ void GameState::draw()
 {
 	char scorefont[10];
 	char livesfont[10];
-	sfw::drawTexture(wall.texture, wall.xPos, wall.yPos, wall.width, wall.height, 0, false, 0);
+	sfw::drawTexture(wall.texture, wall.xPos, wall.yPos, 200, wall.height, 0, false, 0);
+	sfw::drawTexture(wall.texture, 200, wall.yPos, 200, wall.height, 0, false, 0);
+	sfw::drawTexture(wall.texture, 400, wall.yPos, 200, wall.height, 0, false, 0);
+	sfw::drawTexture(wall.texture, 600, wall.yPos, 200, wall.height, 0, false, 0);
 	sfw::drawTexture(player.texture, player.xPos, player.yPos, player.width, player.height, false, 0);
-	sfw::drawCircle(ball.xPos, ball.yPos, ball.radius, ball.radius, MAGENTA);
+	sfw::drawTexture(ball.texture, ball.xPos, ball.yPos, ball.radius, ball.radius, false, 0);
+	//sfw::drawCircle(ball.xPos, ball.yPos, ball.radius, ball.radius, MAGENTA);
 	sprintf_s(scorefont, "SCORE");
 	sfw::drawString(font, scorefont, 0, 25, 25, 25);
 	sfw::drawString(font, std::to_string(score.total).c_str(), 150, 25, 25, 25, 0, ' ');
@@ -58,7 +63,7 @@ void GameState::collision()
 		
 
 
-	if ((ball.xPos - ball.radius) <= 0 || ball.xPos - ball.radius >= 787)
+	if ((ball.xPos - ball.radius) <= -10 || ball.xPos - ball.radius >= 785)
 			ball.xVel = -ball.xVel;
 		
 	

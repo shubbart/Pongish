@@ -8,9 +8,12 @@ void MainMenu::play() { timer = 15.f; }
 
 void MainMenu::draw()
 {
+	unsigned background = sfw::loadTextureMap("./Images/splashBack.jpg");
+	sfw::drawTexture(background, 0, 600, 800, 600, false, 0, ' ');
+
 	char buffer[80];
-	sprintf_s(buffer, "To begin playing press 'Enter'!\nTo exit the game press 'ESC'!\n");
-	sfw::drawString(text, buffer, 0, 150, 16, 16);
+	sprintf_s(buffer, "To begin playing press 'Enter'!\n\nTo exit the game press 'ESC'!\n\n");
+	sfw::drawString(text, buffer, 0, 350, 16, 16);
 	//sfw::drawLine(0, 80, 100 + 500 * (timer / 15.f), 80);
 }
 

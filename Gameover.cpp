@@ -8,9 +8,12 @@ void Gameover::play() { timer = 15.f; }
 
 void Gameover::draw()
 {
+	unsigned background = sfw::loadTextureMap("./Images/gameoverBack.jpg");
+	sfw::drawTexture(background, 0, 600, 800, 600, false, 0, ' ');
+
 	char buffer[120];
-	sprintf_s(buffer, "You have lost the game!\nTo return to the main menu press 'TAB'!\nTo exit the game press 'ESC'!\n");
-	sfw::drawString(text, buffer, 0, 170, 16, 16);
+	sprintf_s(buffer, "You have lost the game!\n\nTo return to the main menu press 'TAB'!\n\nTo exit the game press 'ESC'!\n");
+	sfw::drawString(text, buffer, 0, 350, 16, 16);
 	sfw::drawLine(0, 80, 100 + 500 * (timer / 15.f), 80);
 }
 

@@ -24,9 +24,10 @@ struct Wall
 
 struct Ball
 {
+	int texture;
 	int xPos = 380;
 	int yPos = 320;
-	int radius = 13;
+	int radius = 15;
 	int xVel = 0;
 	int yVel = 5;
 };
