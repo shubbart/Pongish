@@ -38,4 +38,16 @@ struct Score
 	int lost;
 };
 
+struct Enemy
+{
+	int exist = 0;
+	int texture;
+	int xPos = 0;
+	int yPos = 480;
+	int xVel = 0;
+	int width = 80;
+	int height = 15;
+	int health = 0;
+};
+
 #endif

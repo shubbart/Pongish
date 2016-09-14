@@ -11,9 +11,11 @@ void Splash::draw()
 	unsigned background = sfw::loadTextureMap("./Images/splashBack.jpg");
 		sfw::drawTexture(background, 0, 600, 800, 600, false, 0, ' ');
 
-	char buffer[80];
-	sprintf_s(buffer, "Welcome to SoliPong!\n\nPress 'TAB' to begin playing!");
+	char buffer[120];
+	sprintf_s(buffer, "Welcome to SoliPong!\n\n\nPress 'TAB' to goto the Maine Menu!");
 	sfw::drawString(text, buffer, 0, 350, 16, 16);
+	sprintf_s(buffer, "Created by: Shawn Hubbart\n\n            shawn.hubbart@gmail.com");
+	sfw::drawString(text, buffer, 440, 50, 10, 10);
 	//sfw::drawLine(0, 80, 100 + 500 * (timer / 15.f), 80);
 }
 

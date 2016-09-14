@@ -17,6 +17,7 @@ void GameState::init()
 	player.texture = sfw::loadTextureMap("./Images/player.png", 100, 25);
 	wall.texture = sfw::loadTextureMap("./Images/wall.png");
 	ball.texture = sfw::loadTextureMap("./Images/ball.gif");
+	enemy.texture = sfw::loadTextureMap("");
 	font = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
 	text = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 }
@@ -108,7 +109,6 @@ void GameState::extraLife()
 		++player.lives;
 	}
 }
-	
 
 bool GameState::isAlive() const 
 {
@@ -123,4 +123,24 @@ bool GameState::resetLives()
 bool GameState::resetScore()
 {
 	return score.total = 0;
+}
+
+void GameState::battle()
+{
+	if (score.total == 25 && enemy.exist == 0)
+		{
+			++enemy.exist;
+
+		}
+
+	if (enemy.xPos < ball.xPos + ball.radius &&
+		enemy.xPos + enemy.width > ball.xPos &&
+		enemy.yPos < ball.yPos + ball.radius &&
+		enemy.height + enemy.yPos > ball.yPos)
+		{
+		score.total + 10;
+		++player.lives;
+		--enemy.exist;
+
+		}
 }

@@ -10,10 +10,12 @@ class GameState
 	Wall wall;
 	Ball ball;
 	Score score;
+	Enemy enemy;
 	unsigned font;
 	unsigned text;
 
 public:
+
 	void init();
 	void start();
 	void move();
@@ -21,6 +23,8 @@ public:
 	void drop();
 	void draw();
 	void extraLife();
+	void battle();
+
 	bool isAlive() const;
 	bool resetLives();
 	bool resetScore();

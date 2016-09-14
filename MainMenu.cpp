@@ -12,7 +12,7 @@ void MainMenu::draw()
 	sfw::drawTexture(background, 0, 600, 800, 600, false, 0, ' ');
 
 	char buffer[80];
-	sprintf_s(buffer, "To begin playing press 'Enter'!\n\nTo exit the game press 'ESC'!\n\n");
+	sprintf_s(buffer, "To begin playing press 'Enter'!\n\n\nTo exit the game press 'ESC'!\n\n");
 	sfw::drawString(text, buffer, 0, 350, 16, 16);
 	//sfw::drawLine(0, 80, 100 + 500 * (timer / 15.f), 80);
 }
