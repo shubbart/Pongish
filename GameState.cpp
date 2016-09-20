@@ -17,7 +17,8 @@ void GameState::init()
 	player.texture = sfw::loadTextureMap("./Images/player.png", 100, 25);
 	wall.texture = sfw::loadTextureMap("./Images/wall.png");
 	ball.texture = sfw::loadTextureMap("./Images/ball.gif");
-	enemy.texture = sfw::loadTextureMap("");
+	enemy.texture = sfw::loadTextureMap("./Images/enemy1.gif");
+	enemy2.texture = sfw::loadTextureMap("./Images/enemy2.png");
 	font = sfw::loadTextureMap("./res/tonc_font.png", 16, 6);
 	text = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 }
@@ -64,7 +65,7 @@ void GameState::collision()
 		
 
 
-	if ((ball.xPos - ball.radius) <= -10 || ball.xPos - ball.radius >= 785)
+	if ((ball.xPos - ball.radius) <= -10 || ball.xPos + ball.radius >= 800)
 			ball.xVel = -ball.xVel;
 		
 	
@@ -75,17 +76,14 @@ void GameState::collision()
 			player.height + player.yPos > ball.yPos)
 		{
 			ball.yVel = -ball.yVel;
-			score.total = ++score.total;
-
+			++score.total;
+			++score.temp;
+			
 			if (ball.xVel == 0)
 			{
-				ball.xVel = ball.xVel + randRange(-10, 10);
+				ball.xVel = ball.xVel + randRange(-1, 1);
 			}
 
-			if (ball.xVel > 0)
-			{
-				ball.xVel = ball.xVel + randRange(-5, 5);
-			}
 		}
 	
 }
@@ -95,6 +93,7 @@ void GameState::drop()
 	if (ball.yPos < 0)
 	{
 		--player.lives;
+		score.temp = 0;
 		ball.xPos = 380;
 		ball.yPos = 320;
 		ball.xVel = 0;
@@ -102,11 +101,18 @@ void GameState::drop()
 	}
 }
 
-void GameState::extraLife()
+void GameState::difficulty()
 {
-	if (player.score % 50 == 0 && player.score > 0)
+	if (score.temp == 3 && ball.xVel > 0)
 	{
-		++player.lives;
+		ball.xVel = ball.xVel + 2;
+		score.temp = 0;
+	}
+
+	if (score.temp == 3 && ball.xVel < 0)
+	{
+		ball.xVel = ball.xVel - 2;
+		score.temp = 0;
 	}
 }
 
@@ -127,20 +133,90 @@ bool GameState::resetScore()
 
 void GameState::battle()
 {
-	if (score.total == 25 && enemy.exist == 0)
-		{
-			++enemy.exist;
 
-		}
+	if (score.total % 10 == 0 && enemy.exist == 0 && score.total > 0)
+	{
+		enemy.exist = 1;
+	}
+
+	if (enemy.exist == 1)
+	{
+		enemy.xPos = enemy.xStart;
+		enemy.yPos = enemy.yStart;
+
+		enemy.xPos = enemy.xPos + enemy.xVel;
+
+		enemy.xStart = enemy.xPos;
+
+		sfw::drawTexture(enemy.texture, enemy.xPos, enemy.yPos, enemy.width, enemy.height, false, 0);
+	}
 
 	if (enemy.xPos < ball.xPos + ball.radius &&
-		enemy.xPos + enemy.width > ball.xPos &&
-		enemy.yPos < ball.yPos + ball.radius &&
-		enemy.height + enemy.yPos > ball.yPos)
+			enemy.xPos + enemy.width > ball.xPos &&
+			enemy.yPos < ball.yPos + ball.radius &&
+			enemy.height + enemy.yPos > ball.yPos)
 		{
-		score.total + 10;
-		++player.lives;
-		--enemy.exist;
-
+			enemy.exist = 0;
+			score.total = score.total + 2;
+			enemy.xStart = -80;
+			enemy.xPos = enemy.xStart;
+			ball.yVel = -ball.yVel;
 		}
+
+	if (enemy.xPos >= 880)
+		{
+			enemy.exist = 0;
+			enemy.xStart = -80;
+		}
+	
+}
+
+void GameState::battle2()
+{
+
+	if (score.total % 50 == 0 && enemy2.exist == 0 && score.total > 0 ||
+		score.total % 55 == 0 && enemy2.exist == 0 && score.total > 0)
+	{
+		enemy2.exist = 1;
+	}
+
+	if (enemy2.exist == 1)
+	{
+		enemy2.xPos = enemy2.xStart;
+		enemy2.yPos = enemy2.yStart;
+
+		enemy2.xPos = enemy2.xPos - enemy2.xVel;
+		enemy2.yPos = enemy2.yPos - enemy2.yVel;
+
+		enemy2.xStart = enemy2.xPos;
+		enemy2.yStart = enemy2.yPos;
+
+		sfw::drawTexture(enemy2.texture, enemy2.xPos, enemy2.yPos, enemy2.width, enemy2.height, 270, false, 0);
+
+		if ((enemy2.yPos) <= 100 || (enemy2.yPos) >= 500)
+			enemy2.yVel = -enemy2.yVel;
+	}
+
+
+	if (enemy2.xPos < ball.xPos + ball.radius &&
+		enemy2.xPos + enemy2.width > ball.xPos &&
+		enemy2.yPos < ball.yPos + ball.radius &&
+		enemy2.height + enemy2.yPos > ball.yPos)
+	{
+		enemy2.exist = 0;
+		++player.lives;
+		score.total = score.total + 10;
+		enemy2.xStart = 820;
+		enemy2.yStart = 480;
+		enemy2.xPos = enemy2.xStart;
+		enemy2.yPos = enemy2.yStart;
+		ball.yVel = -ball.yVel;
+	}
+
+	if (enemy2.xPos <= -60)
+	{
+		enemy2.exist = 0;
+		enemy2.xStart = 820;
+		enemy2.yStart = 480;
+	}
 }

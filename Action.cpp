@@ -25,8 +25,10 @@ void Action::step()
 	gs.start();
 	gs.move();
 	gs.collision();
+	gs.difficulty();
 	gs.drop();
-	gs.extraLife();
+	gs.battle();
+	gs.battle2();
 }
 
 APP_STATE Action::next()

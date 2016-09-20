@@ -1,4 +1,5 @@
 #include "Gameover.h"
+#include "Struct.h"
 #include "sfwdraw.h"
 #include <cstdio>
 

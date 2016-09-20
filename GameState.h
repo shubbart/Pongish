@@ -11,6 +11,7 @@ class GameState
 	Ball ball;
 	Score score;
 	Enemy enemy;
+	Enemy2 enemy2;
 	unsigned font;
 	unsigned text;
 
@@ -21,9 +22,10 @@ public:
 	void move();
 	void collision();
 	void drop();
+	void difficulty();
 	void draw();
-	void extraLife();
 	void battle();
+	void battle2();
 
 	bool isAlive() const;
 	bool resetLives();
