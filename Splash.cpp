@@ -2,6 +2,7 @@
 #include "sfwdraw.h"
 #include <cstdio>
 
+
 void Splash::init(int a_font) { text = a_font; }
 
 void Splash::play() { timer = 15.f; }

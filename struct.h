@@ -49,8 +49,8 @@ struct Enemy
 	int xPos = -80;
 	int yPos = 480;
 	int xVel = 1;
-	int width = 80;
-	int height = 15;
+	int width = 60;
+	int height = 20;
 };
 
 struct Enemy2
@@ -74,12 +74,12 @@ struct Missle
 	int texture;
 	int exist;
 
-	int xStart = 870;
+	int xStart;
 	int yStart = 650;
 	int xPos;
 	int yPos = 650;
 	int xVel = 0;
 	int yVel = 2;
-	int radius = 35;
+	int radius = 20;
 };
 #endif

@@ -1,10 +1,24 @@
 #include "MainMenu.h"
 #include "sfwdraw.h"
 #include <cstdio>
+#include "GameState.h"
+#include <windows.h>
 
-void MainMenu::init(int a_font) { text = a_font; }
+GameState play;
 
-void MainMenu::play() { timer = 15.f; }
+int main = 1;
+
+void MainMenu::init(int a_font)
+{ text = a_font;
+
+if (main = 1)
+{
+	PlaySound("./Sound/QOSilence.wav", NULL, SND_ASYNC);
+}
+
+}
+
+void MainMenu::play() { timer = 1.f; }
 
 void MainMenu::draw()
 {
@@ -16,7 +30,7 @@ void MainMenu::draw()
 	sfw::drawString(text, buffer, 0, 550, 16, 16);
 	sprintf_s(buffer, "During the game\n\nPress 'TAB'\n\n to send the ball to an enemy's location!");
 	sfw::drawString(text, buffer, 150, 250, 16, 16);
-	//sfw::drawLine(0, 80, 100 + 500 * (timer / 15.f), 80);
+	//sfw::drawLine(0, 80, 100 + 500 * (timer / 1.f), 80);
 }
 
 void MainMenu::step()

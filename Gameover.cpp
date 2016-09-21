@@ -16,8 +16,10 @@ void Gameover::draw()
 	char buffer[120];
 	//sprintf_s(buffer, "Score: %d",);
 	//sfw::drawString(text, buffer, 600, 500, 16, 16);
-	sprintf_s(buffer, "You have lost the game!\n\n\nTo return to the main menu press 'TAB'!\n\n\nTo exit the game press 'ESC'!\n");
+	sprintf_s(buffer, "Game Over!\n\n\nTo return to the main menu press 'TAB'!\n\n\nTo exit the game press 'ESC'!\n");
 	sfw::drawString(text, buffer, 0, 350, 16, 16);
+	sprintf_s(buffer, "'Sound of Silence'\n\nPerformed by Benn Down (Quiet One)");
+	sfw::drawString(text, buffer, 0, 50, 10, 10);
 	sprintf_s(buffer, "Created by: Shawn Hubbart\n\n            shawn.hubbart@gmail.com");
 	sfw::drawString(text, buffer, 440, 50, 10, 10);
 	sfw::drawLine(0, 80, 100 + 500 * (timer / 15.f), 80);

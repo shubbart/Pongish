@@ -5,7 +5,6 @@
 #include <string>
 #include <windows.h>
 
-
 int randRange(int start, int end)
 {
 	srand(time(NULL));
@@ -67,7 +66,7 @@ void GameState::collision()
 	if ((ball.yPos - ball.radius) >= (wall.yPos - 100))
 	{
 		ball.yVel = -ball.yVel;
-		PlaySound("./Sound/wall.wav", NULL, SND_ASYNC);
+		//PlaySound("./Sound/wall.wav", NULL, SND_ASYNC);
 	}
 		
 
@@ -75,7 +74,7 @@ void GameState::collision()
 	if ((ball.xPos - ball.radius) <= -10 || ball.xPos + ball.radius >= 800)
 	{
 		ball.xVel = -ball.xVel;
-		PlaySound("./Sound/wall.wav", NULL, SND_ASYNC);
+		//PlaySound("./Sound/wall.wav", NULL, SND_ASYNC);
 	}
 
 	if (player.xPos < ball.xPos + ball.radius &&
@@ -87,7 +86,7 @@ void GameState::collision()
 			ball.yVel = -ball.yVel;
 			++score.total;
 			++score.temp;
-			PlaySound("./Sound/paddle.wav", NULL, SND_ASYNC);
+			//PlaySound("./Sound/paddle.wav", NULL, SND_ASYNC);
 					
 			if (ball.xVel == 0)
 			{
@@ -108,11 +107,11 @@ void GameState::drop()
 		ball.yPos = 320;
 		ball.xVel = 0;
 		player.xPos = 325;
-		PlaySound("./Sound/drop.wav", NULL, SND_ASYNC);
+		//PlaySound("./Sound/drop.wav", NULL, SND_ASYNC);
 	}
 
-	if (player.lives == 0)
-		PlaySound("./Sound/StH.wav", NULL, SND_ASYNC);
+	//if (player.lives == 0)
+		//PlaySound("./Sound/QOSilence.wav", NULL, SND_ASYNC);
 }
 
 void GameState::difficulty()
@@ -160,7 +159,7 @@ void GameState::battle()
 			enemy.xStart = -80;
 			enemy.xPos = enemy.xStart;
 			ball.yVel = -ball.yVel;
-			PlaySound("./Sound/explosion.wav", NULL, SND_ASYNC);
+			//PlaySound("./Sound/explosion.wav", NULL, SND_ASYNC);
 		}
 
 	if (enemy.xPos >= 880)
@@ -211,7 +210,7 @@ void GameState::battle2()
 		enemy2.xPos = enemy2.xStart;
 		enemy2.yPos = enemy2.yStart;
 		ball.yVel = -ball.yVel;
-		PlaySound("./Sound/explosion2.wav", NULL, SND_ASYNC);
+		//PlaySound("./Sound/explosion2.wav", NULL, SND_ASYNC);
 	}
 
 	if (enemy2.xPos <= -60)
@@ -242,7 +241,7 @@ void GameState::missle()
 
 void GameState::extraMissle()
 {
-	if (score.total % 35 == 0 && score.total > 0 && extra.exist == 0)
+	if (score.total % 30 == 0 && score.total > 0 && extra.exist == 0)
 	{
 		extra.exist = 1;
 	}
@@ -273,7 +272,7 @@ void GameState::extraMissle()
 		extra.xPos = extra.xStart;
 		extra.yPos = extra.yStart;
 		++player.ammo;
-		PlaySound("./Sound/pickup.wav", NULL, SND_ASYNC);
+		//PlaySound("./Sound/pickup.wav", NULL, SND_ASYNC);
 
 	}
 	
