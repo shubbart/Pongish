@@ -13,7 +13,9 @@ void MainMenu::draw()
 
 	char buffer[80];
 	sprintf_s(buffer, "To begin playing press 'Enter'!\n\n\nTo exit the game press 'ESC'!\n\n");
-	sfw::drawString(text, buffer, 0, 350, 16, 16);
+	sfw::drawString(text, buffer, 0, 550, 16, 16);
+	sprintf_s(buffer, "During the game\n\nPress 'TAB'\n\n to send the ball to an enemy's location!");
+	sfw::drawString(text, buffer, 150, 250, 16, 16);
 	//sfw::drawLine(0, 80, 100 + 500 * (timer / 15.f), 80);
 }
 

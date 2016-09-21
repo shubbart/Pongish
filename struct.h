@@ -10,6 +10,8 @@ struct Player
 	int width = 120;
 	int height = 15;
 	int lives = 3;
+	int score = 0;
+	int ammo = 3;
 };
 
 struct Wall
@@ -57,12 +59,27 @@ struct Enemy2
 	int texture;
 	int xStart = 820;
 	int yStart = 480;
-	int xPos;
-	int yPos;
+	int xPos = 820;
+	int yPos = 480;
 	int xVel = 3;
 	int yVel = 6;
 	int width = 40;
 	int height = 55;
 };
 
+
+
+struct Missle
+{
+	int texture;
+	int exist;
+
+	int xStart = 870;
+	int yStart = 650;
+	int xPos;
+	int yPos = 650;
+	int xVel = 0;
+	int yVel = 2;
+	int radius = 35;
+};
 #endif

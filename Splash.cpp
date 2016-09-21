@@ -12,7 +12,7 @@ void Splash::draw()
 		sfw::drawTexture(background, 0, 600, 800, 600, false, 0, ' ');
 
 	char buffer[120];
-	sprintf_s(buffer, "Welcome to SoliPong!\n\n\nPress 'TAB' to goto the Maine Menu!");
+	sprintf_s(buffer, "Welcome to SoliPong!\n\n\nPress 'TAB' to goto the Main Menu!");
 	sfw::drawString(text, buffer, 0, 350, 16, 16);
 	sprintf_s(buffer, "Created by: Shawn Hubbart\n\n            shawn.hubbart@gmail.com");
 	sfw::drawString(text, buffer, 440, 50, 10, 10);

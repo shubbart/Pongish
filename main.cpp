@@ -8,6 +8,7 @@
 #include "Gameover.h"
 #include "MainMenu.h"
 #include "Action.h"
+#include <windows.h>
 
 void main()
 {
