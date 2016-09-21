@@ -39,7 +39,7 @@ void GameState::draw()
 	sfw::drawString(font, std::to_string(score.total).c_str(), 150, 25, 25, 25, 0, ' ');
 	sprintf_s(scorefont, "POWER");
 	sfw::drawString(font, scorefont, 300, 25, 25, 25);
-	sfw::drawString(font, std::to_string(player.ammo).c_str(), 500, 25, 25, 25, 0, ' ');
+	sfw::drawString(font, std::to_string(player.ammo).c_str(), 450, 25, 25, 25, 0, ' ');
 	sprintf_s(livesfont, "LIVES");
 	sfw::drawString(font, livesfont, 625, 25, 25, 25);
 	sfw::drawString(font, std::to_string(player.lives).c_str(), 775, 25, 25, 25, 0, ' ');
