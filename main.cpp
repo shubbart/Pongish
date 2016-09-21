@@ -13,7 +13,7 @@
 void main()
 {
 
-	sfw::initContext(800,600,"SoliPong");
+	sfw::initContext(800,600,"Pong of Solitude");
 	unsigned text = sfw::loadTextureMap("./res/fontmap.png", 16, 16);
 
 
